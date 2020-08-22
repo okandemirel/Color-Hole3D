@@ -24,13 +24,39 @@ namespace Managers
 
         #region Public Variables
 
-        public bool isTouching;
+        public bool IsTouching, IsAvailableForTouch;
+        public Vector3 TouchPositionForMovement;
 
         #endregion
 
+        #region Private Variables
+
+        private float TouchPosX, TouchPosY;
+
+        #endregion
+
+        private void Start() => EventManager.Instance.LevelTouchConditions = TouchActivation;
+
         private void Update()
         {
-            isTouching = Input.GetMouseButton(0);
+            if (!IsAvailableForTouch) return;
+            IsTouching = Input.GetMouseButton(0);
+
+            if (!IsTouching) return;
+            GetTouchPositions();
+        }
+
+        private void GetTouchPositions()
+        {
+            TouchPosX = Input.GetAxis("Mouse X");
+            TouchPosY = Input.GetAxis("Mouse Y");
+
+            TouchPositionForMovement = new Vector3(TouchPosX, 0, TouchPosY);
+        }
+
+        private void TouchActivation(bool touchConditionValue)
+        {
+            IsAvailableForTouch = touchConditionValue;
         }
     }
 }

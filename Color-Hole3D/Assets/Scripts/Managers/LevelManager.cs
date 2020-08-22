@@ -31,10 +31,7 @@ namespace Managers
         #region Unity Actions
 
         public UnityAction<LevelScriptable> LevelInstantiate = delegate { };
-        public UnityAction<int> NewLevelUIAssign = delegate { };
-        public UnityAction LevelUIInitialize = delegate { };
         public UnityAction StartNewLevel = delegate { };
-        public UnityAction<int> ActivateLevelEndCanvas = delegate { };
 
         #endregion
 
@@ -81,12 +78,12 @@ namespace Managers
             #region Initialize Level
 
             LevelInstantiate.Invoke(Levels[CurrentLevel]);
-            // LevelInitializeBallCounterAssignForCanvasBallArea.Invoke(levels[currentLevel]);
+
             yield return new WaitForSeconds(.001f);
-            //NavMeshBuilder.BuildNavMesh();
-            LevelUIInitialize.Invoke();
-            NewLevelUIAssign.Invoke(PlayerPrefs.GetInt("level") + 1);
-            //EventManager.instance.AssignCinemachinesFirstTargetPlayerItself.Invoke(0);
+            UIManager.Instance.ActivateGameStartCanvas.Invoke();
+            UIManager.Instance.NewLevelUITextAssign.Invoke(PlayerPrefs.GetInt("level") + 1);
+            yield return new WaitForSeconds(.6f);
+            EventManager.Instance.LevelTouchConditions.Invoke(true);
 
             #endregion
         }
@@ -94,6 +91,11 @@ namespace Managers
         private void OnDisable()
         {
             GameData.OnLevelUpdate -= ReloadScene;
+        }
+
+        public void StartLevel()
+        {
+            StartNewLevel.Invoke();
         }
 
         public void LevelSuccess()

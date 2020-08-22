@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ScriptableScripts;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Managers
 {
@@ -24,7 +25,10 @@ namespace Managers
 
         #region Public Variables
 
+        public int LevelCollectableSize, AfterControlIncreasedCounterSize;
+
         #endregion
+
 
         #region Serialized Variables
 
@@ -33,5 +37,25 @@ namespace Managers
         #region Private Variables
 
         #endregion
+
+        private void Start()
+        {
+            LevelManager.Instance.LevelInstantiate += AssignLevelsRequiredCollectableSize;
+        }
+
+        public void IncreaseCounterAndControl()
+        {
+            AfterControlIncreasedCounterSize++;
+            
+            //UIManager.Instance.IncreaseUILevelBar.Invoke(AfterControlIncreasedCounterSize);
+            
+            if (AfterControlIncreasedCounterSize != LevelCollectableSize) return;
+            LevelManager.Instance.LevelSuccess();
+        }
+
+        private void AssignLevelsRequiredCollectableSize(LevelScriptable newLevel)
+        {
+            LevelCollectableSize = newLevel.LevelCollectableCount;
+        }
     }
 }

@@ -25,14 +25,8 @@ namespace Managers
 
         #region Unity Actions
 
-        //public UnityAction ChangeCameraOffsetToPhaseTwoCameraCondition = delegate { };
-
-        public UnityAction StopAllPoliceCauseLevelFailed = delegate { };
-
-        public UnityAction DestroyAllPoliceCauseLevelSuccessfull = delegate { };
-
-        public UnityAction<int> AssignCinemachinesTargetPlayer = delegate { };
-        public UnityAction StopCameraFollow = delegate { };
+        public UnityAction<bool> LevelCanvasConditions = delegate { };
+        public UnityAction<bool> LevelTouchConditions = delegate { };
 
         #endregion
     }

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: df66b1cee45694c749539ccc45ff4c67
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bumpo
+  fontNames:
+  - Bumpo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 94ccf923074a547b3b2942e3b50fd1c0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

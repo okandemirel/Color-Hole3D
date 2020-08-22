@@ -27,20 +27,8 @@ namespace Managers
 
         public UnityAction<int> NewLevelUITextAssign = delegate { };
         public UnityAction ActivateGameStartCanvas = delegate { };
-        public UnityAction CloseJoystickCanvasCauseLevelConditionHappened = delegate { };
-
+        public UnityAction<int> IncreaseUILevelBar = delegate {  };
         #endregion
-
-        private void Start()
-        {
-            LevelManager.Instance.NewLevelUIAssign = SetNewLevelsText;
-            LevelManager.Instance.LevelUIInitialize = ActivateGameCanvas;
-        }
-
-        public void StartLevel()
-        {
-            LevelManager.Instance.StartNewLevel.Invoke();
-        }
 
         private void SetNewLevelsText(int newLevelValue)
         {
