@@ -1,4 +1,5 @@
-﻿using ScriptableScripts;
+﻿using System.Collections;
+using ScriptableScripts;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,14 +24,22 @@ namespace Managers
 
         #endregion
 
-        #region Public Variables
+        #region Static Variables
 
-        public int LevelCollectableSize, AfterControlIncreasedCounterSize;
+        public static bool IsGameOver;
 
         #endregion
 
+        #region Public Variables
+
+        public int LevelCollectableSize, AfterControlIncreasedCounterSize, ZoneCollectable;
+        public bool AdvertisementPlayed; //If there was an AdManager in game this will be added to there.
+
+        #endregion
 
         #region Serialized Variables
+
+        [SerializeField] private ParticleSystem levelCompleteConfetti;
 
         #endregion
 
@@ -40,22 +49,32 @@ namespace Managers
 
         private void Start()
         {
-            LevelManager.Instance.LevelInstantiate += AssignLevelsRequiredCollectableSize;
+            IsGameOver = false;
+            LevelManager.Instance.SetLevelVariables += AssignLevelsRequiredCollectableSize;
         }
 
         public void IncreaseCounterAndControl()
         {
             AfterControlIncreasedCounterSize++;
-            
-            //UIManager.Instance.IncreaseUILevelBar.Invoke(AfterControlIncreasedCounterSize);
-            
+
+            UIManager.Instance.IncreaseUILevelBar.Invoke();
+
             if (AfterControlIncreasedCounterSize != LevelCollectableSize) return;
-            LevelManager.Instance.LevelSuccess();
+
+            levelCompleteConfetti.Play();
+
+            StartCoroutine(GoToNextLevel());
         }
 
         private void AssignLevelsRequiredCollectableSize(LevelScriptable newLevel)
         {
-            LevelCollectableSize = newLevel.LevelCollectableCount;
+            LevelCollectableSize = newLevel.LevelCollectablesCount;
+        }
+
+        private IEnumerator GoToNextLevel()
+        {
+            yield return new WaitForSeconds(2.2f);
+            LevelManager.Instance.LevelSuccess();
         }
     }
 }

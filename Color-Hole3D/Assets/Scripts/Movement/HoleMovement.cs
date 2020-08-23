@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Managers;
 using UnityEngine;
 
@@ -22,6 +21,7 @@ namespace Movement
         [SerializeField] private Transform holeCenter;
         [SerializeField] private float radius;
         [SerializeField] private Vector2 moveLimits;
+        [SerializeField] private List<int> _holeVertices = new List<int>();
 
         #endregion
 
@@ -29,7 +29,6 @@ namespace Movement
 
         private Mesh _holeMesh;
 
-        private readonly List<int> _holeVertices = new List<int>();
         private readonly List<Vector3> _offsets = new List<Vector3>();
         private int _holeVerticesCount;
         private Vector3 _movePos, _afterLimitsMovePos;
@@ -84,7 +83,7 @@ namespace Movement
 
         private void FindHoleVertices()
         {
-            for (var i = 0; i < _holeMesh.vertices.Length; i++)
+            for (var i = 0; i < _holeMesh.vertexCount; i++)
             {
                 var distance = Vector3.Distance(holeCenter.position, _holeMesh.vertices[i]);
 
@@ -97,6 +96,7 @@ namespace Movement
                 _holeVerticesCount = _holeVertices.Count;
             }
         }
+
 
         private void OnDrawGizmos()
         {

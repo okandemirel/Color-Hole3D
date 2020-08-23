@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelPrefab: {fileID: 8031940601944127170, guid: b36c07b085e0e47589bfcb1bc9f1007b,
     type: 3}
-  LevelCollectableCount: 9
-  LowPolyGroundColor: {r: 1, g: 0.5529412, b: 0.45882353, a: 1}
-  GroundColor: {r: 1, g: 0.6392157, b: 0.16470589, a: 1}
-  FakeBordersColor: {r: 1, g: 0.62352943, b: 0.4, a: 1}
-  CollectableObjectsColor: {r: 1, g: 1, b: 1, a: 1}
-  NonCollectableObjectsColor: {r: 1, g: 0.5411765, b: 0.7764706, a: 1}
+  LevelCollectablesCount: 9
+  Zone1CollectableCount: 0
+  Zone2CollectableCount: 0
+  LowPolyWaterColor: {r: 1, g: 0.5529412, b: 0.45882353, a: 1}

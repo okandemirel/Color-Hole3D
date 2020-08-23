@@ -31,6 +31,7 @@ namespace Managers
         #region Unity Actions
 
         public UnityAction<LevelScriptable> LevelInstantiate = delegate { };
+        public UnityAction<LevelScriptable> SetLevelVariables = delegate { };
         public UnityAction StartNewLevel = delegate { };
 
         #endregion
@@ -83,6 +84,7 @@ namespace Managers
             UIManager.Instance.ActivateGameStartCanvas.Invoke();
             UIManager.Instance.NewLevelUITextAssign.Invoke(PlayerPrefs.GetInt("level") + 1);
             yield return new WaitForSeconds(.6f);
+            SetLevelVariables.Invoke(Levels[CurrentLevel]);
             EventManager.Instance.LevelTouchConditions.Invoke(true);
 
             #endregion

@@ -25,7 +25,8 @@ namespace Managers
 
         #region Unity Actions
 
-        public UnityAction<bool> LevelCanvasConditions = delegate { };
+        public UnityAction<bool> LevelCanvasConditionsForOpening = delegate { };
+        public UnityAction<bool> LevelCanvasConditionsForClosing = delegate { };
         public UnityAction<bool> LevelTouchConditions = delegate { };
 
         #endregion

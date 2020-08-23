@@ -28,7 +28,7 @@ namespace Managers
 
 
             Application.targetFrameRate = 60;
-            Application.backgroundLoadingPriority = ThreadPriority.Low;
+            //Application.backgroundLoadingPriority = ThreadPriority.Low;
         }
 
         #endregion

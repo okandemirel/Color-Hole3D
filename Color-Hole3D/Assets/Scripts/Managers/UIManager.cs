@@ -27,7 +27,8 @@ namespace Managers
 
         public UnityAction<int> NewLevelUITextAssign = delegate { };
         public UnityAction ActivateGameStartCanvas = delegate { };
-        public UnityAction<int> IncreaseUILevelBar = delegate {  };
+        public UnityAction IncreaseUILevelBar = delegate { };
+
         #endregion
 
         private void SetNewLevelsText(int newLevelValue)

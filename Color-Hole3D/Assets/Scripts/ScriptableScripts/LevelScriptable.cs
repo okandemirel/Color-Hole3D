@@ -6,13 +6,7 @@ namespace ScriptableScripts
     public class LevelScriptable : ScriptableObject
     {
         public GameObject LevelPrefab;
-        public int LevelCollectableCount;
-
-        public Color
-            LowPolyGroundColor,
-            GroundColor,
-            FakeBordersColor,
-            CollectableObjectsColor,
-            NonCollectableObjectsColor;
+        public int LevelCollectablesCount, Zone1CollectableCount, Zone2CollectableCount;
+        public Color LowPolyWaterColor;
     }
 }
