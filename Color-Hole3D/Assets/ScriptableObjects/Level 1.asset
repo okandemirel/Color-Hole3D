@@ -16,5 +16,5 @@ MonoBehaviour:
     type: 3}
   LevelCollectablesCount: 9
   Zone1CollectableCount: 0
-  Zone2CollectableCount: 0
   LowPolyWaterColor: {r: 1, g: 0.5529412, b: 0.45882353, a: 1}
+  ZoneChangeable: 0

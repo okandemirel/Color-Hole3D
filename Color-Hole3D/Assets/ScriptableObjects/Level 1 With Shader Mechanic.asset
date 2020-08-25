@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1293f48ae0fe844eaa06cbabbcc17914, type: 3}
+  m_Name: Level 1 With Shader Mechanic
+  m_EditorClassIdentifier: 
+  LevelPrefab: {fileID: 8031940601944127170, guid: 69bde6c2dd0ff417a951e5c83a44ad68,
+    type: 3}
+  LevelCollectablesCount: 25
+  Zone1CollectableCount: 8
+  LowPolyWaterColor: {r: 1, g: 0.5529412, b: 0.45882353, a: 1}
+  ZoneChangeable: 1

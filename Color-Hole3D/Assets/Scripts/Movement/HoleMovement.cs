@@ -39,6 +39,12 @@ namespace Movement
         {
             _holeMesh = holeMeshFilter.mesh;
 
+#if UNITY_EDITOR
+            HoleMovementSpeed = 6;
+#else
+            HoleMovementSpeed = 2;
+#endif
+
             FindHoleVertices();
         }
 
@@ -100,7 +106,7 @@ namespace Movement
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(holeCenter.position, radius);
         }
     }

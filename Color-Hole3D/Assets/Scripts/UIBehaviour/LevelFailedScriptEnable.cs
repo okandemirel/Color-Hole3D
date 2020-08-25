@@ -31,7 +31,6 @@ namespace UIBehaviour
 
         private void StartCountDown()
         {
-            Debug.Log("Girdim");
             circleCountDownImage.gameObject.SetActive(true);
             circleCountDownImage.DOFillAmount(1, 5)
                 .SetEase(Ease.Linear)

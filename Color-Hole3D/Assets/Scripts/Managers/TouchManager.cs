@@ -35,15 +35,26 @@ namespace Managers
 
         #endregion
 
-        private void Start() => EventManager.Instance.LevelTouchConditions = TouchActivation;
+        private void Start()
+        {
+            EventManager.Instance.LevelTouchConditions = TouchActivation;
+        }
 
         private void Update()
         {
             if (!IsAvailableForTouch) return;
+            #if UNITY_EDITOR
+
             IsTouching = Input.GetMouseButton(0);
 
             if (!IsTouching) return;
             GetTouchPositions();
+            #else
+             IsTouching = Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved; 
+
+            if (!IsTouching) return;
+            GetTouchPositions();
+            #endif
         }
 
         private void GetTouchPositions()

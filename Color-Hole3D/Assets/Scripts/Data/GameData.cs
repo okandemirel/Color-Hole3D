@@ -5,6 +5,9 @@ namespace Data
 {
     public static class GameData
     {
+        private static string buildIndex = "buildIndex";
+
+
         private static string Level = "level";
         public static UnityAction OnLevelUpdate;
 

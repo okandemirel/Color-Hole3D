@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using Managers;
 using TMPro;
 using UnityEngine;
@@ -16,6 +17,12 @@ namespace UIBehaviour
 
         #endregion
 
+        #region Private Variables
+
+        private Tween _progressBarTween;
+
+        #endregion
+
         private void Start()
         {
             UIManager.Instance.NewLevelUITextAssign = AssignLevelText;
@@ -23,7 +30,7 @@ namespace UIBehaviour
             EventManager.Instance.LevelCanvasConditionsForOpening = ActivateLevelConditionCanvas;
             EventManager.Instance.LevelCanvasConditionsForClosing = DeactivateLevelConditionCanvas;
         }
-
+        
         private void ActivateLevelConditionCanvas(bool value)
         {
             levelConditionsCanvas.gameObject.SetActive(true);
@@ -63,7 +70,7 @@ namespace UIBehaviour
             var fillValue = (float) GameplayManager.Instance.AfterControlIncreasedCounterSize /
                             GameplayManager.Instance.LevelCollectableSize;
 
-            progressBarImage.DOFillAmount(fillValue, .15f);
+            _progressBarTween = progressBarImage.DOFillAmount(fillValue, .15f);
         }
     }
 }

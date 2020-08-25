@@ -5,7 +5,6 @@ using ScriptableScripts;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using Random = UnityEngine.Random;
 
 namespace Managers
 {
@@ -59,15 +58,20 @@ namespace Managers
 
             if (!LevelRestarted)
             {
-                //currentLevel = GameData.CurrentLevel % levels.Count;
-                CurrentLevel = GameData.CurrentLevel;
+                //If want to analyze which level causes drop out
+
+                CurrentLevel = GameData.CurrentLevel % Levels.Count;
+
+                //If want to see random levels
+
+                //CurrentLevel = GameData.CurrentLevel;
 
 
-                if (CurrentLevel >= Levels.Count)
-                {
-                    CurrentLevel = Random.Range(0, Levels.Count);
-                    if (CurrentLevel == PreviousLevel) CurrentLevel = Random.Range(0, Levels.Count);
-                }
+                // if (CurrentLevel >= Levels.Count)
+                // {
+                //     CurrentLevel = Random.Range(0, Levels.Count);
+                //     if (CurrentLevel == PreviousLevel) CurrentLevel = Random.Range(0, Levels.Count);
+                // }
             }
 
             else CurrentLevel = PreviousLevel;
